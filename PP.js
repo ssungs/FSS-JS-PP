@@ -31,3 +31,4 @@ console.log(render());
 
 // 2. 특정 프로퍼티 값 추출
 
+
