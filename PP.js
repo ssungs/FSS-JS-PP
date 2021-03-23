@@ -29,18 +29,6 @@ function render() {
 
 console.log(render());
 
-/*
-<li id="3">
-  <label><input type="checkbox">HTML</label>
-</li>
-<li id="2">
-  <label><input type="checkbox" checked>CSS</label>
-</li>
-<li id="1">
-  <label><input type="checkbox">Javascript</label>
-</li>
-*/
-
 // 2. 특정 프로퍼티 값 추출
 
 const todos = [
@@ -51,9 +39,9 @@ const todos = [
 function getValues(key) {
   return todos.map(item => { return item[key] })
 }
-console.log(getValues('id')); // [3, 2, 1]
-console.log(getValues('content')); // ['HTML', 'CSS', 'Javascript']
-console.log(getValues('completed')); // [false, true, false]
+console.log(getValues('id'));
+console.log(getValues('content'));
+console.log(getValues('completed'));
 
 // 3. 프로퍼티 정렬
 
@@ -64,8 +52,9 @@ const todos = [
 ];
 
 function sortBy(key) {
-  let arr = todos.slice();
-  arr.sort((a, b) => a - b);
+  let object = todos.slice();
+  if (typeof (object[key]) === )
+  arr.sort((front[key], back[key]) => a - b);
   return arr;
 }
 
@@ -139,13 +128,6 @@ removeTodo(2);
 
 console.log(todos);
 
-/*
-[
-  { id: 3, content: 'HTML', completed: false },
-  { id: 1, content: 'Javascript', completed: false }
-]
-*/
-
 // 6. 특정 요소의 프로퍼티 값 반전
 
 let todos = [
@@ -153,23 +135,70 @@ let todos = [
   { id: 2, content: 'CSS', completed: true },
   { id: 1, content: 'Javascript', completed: false }
 ];
+
 function toggleCompletedById(id) {
-  todos.find(idNum => idNum.id === id);
   if (todos.find(idNum => idNum.id === id).completed === true) {
     todos.find(idNum => idNum.id === id).completed = false;
   } else if (todos.find(idNum => idNum.id === id).completed === false) {
     todos.find(idNum => idNum.id === id).completed = true;
   }
 }
-toggleCompletedById(1);
+toggleCompletedById(2);
 console.log(todos);
-/*
-[
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: false },
-  { id: 1, content: 'Javascript', completed: false }
-]
-*/
 
 // 7. 모든 요소의 completed 프로퍼티 값을 true로 설정
 
+let todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false }
+];
+
+function toggleCompletedAll() {
+  todos.forEach(item => {
+    if (item.completed === false) { 
+      item.completed = true;
+    }
+  })
+} // forEach 를 사용해 기본 배열을 바로 변경하는 방법
+
+toggleCompletedAll();
+
+console.log(todos);
+
+// 8. completed 프로퍼티의 값이 true인 요소의 갯수 구하기
+
+let todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false }
+];
+
+function countCompletedTodos() {
+  let count = 0;
+  todos.map(item => {
+    if (item.completed === true) {
+      count += 1;
+    }
+  })
+  console.log(todos);
+  return count;
+}
+
+console.log(countCompletedTodos());
+
+// 9. id 프로퍼티의 값 중에서 최대값 구하기
+
+let todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false }
+];
+
+function getMaxId() {
+  const copy = todos.map(item => { return item.id })
+  const max = Math.max( ...copy );
+  return max;
+}
+
+console.log(getMaxId());
