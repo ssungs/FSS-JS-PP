@@ -52,41 +52,29 @@ const todos = [
 ];
 
 function sortBy(key) {
-  let object = todos.slice();
-  if (typeof (object[key]) === )
-  arr.sort((front[key], back[key]) => a - b);
-  return arr;
+  let copy = todos.slice();
+  if (key === 'id') {
+    idSort();
+  } else if (key === 'content') { 
+    contentSort();
+  } else if (key === 'completed') {  
+    completedSort();
+  }
+  function idSort() {
+    copy.sort((a, b) => a[key] - b[key]);
+  }
+  function contentSort() {
+    copy.sort((a, b) => a[key].length - b[key].length);
+  }
+  function completedSort() {
+    copy.sort((a, b) => a[key] - b[key]);
+  }
+  return copy;
 }
 
 console.log(sortBy('id'));
-
-/*
-[
-  { id: 1, content: 'Javascript', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 3, content: 'HTML', completed: false }
-]
-*/
-
 console.log(sortBy('content'));
-
-/*
-[
-  { id: 2, content: 'CSS', completed: true },
-  { id: 3, content: 'HTML', completed: false },
-  { id: 1, content: 'Javascript', completed: false }
-]
-*/
-
 console.log(sortBy('completed'));
-
-/*
-[
-  { id: 3, content: 'HTML', completed: false },
-  { id: 1, content: 'Javascript', completed: false },
-  { id: 2, content: 'CSS', completed: true }
-]
-*/
 
 // 4. 새로운 요소 추가
 
